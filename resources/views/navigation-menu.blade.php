@@ -18,6 +18,16 @@
                     <x-jet-nav-link href="{{ route('ingredients.index') }}" :active="request()->routeIs('ingredients.index')">
                         {{ __('Ingredient') }}
                     </x-jet-nav-link>
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-jet-nav-link href="{{ route('shoppingcart.index') }}" :active="request()->routeIs('shoppingcart.index')">
+                            {{ __('Shopping Cart') }}
+                        </x-jet-nav-link>
+                    </div>
+                    {{--                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">--}}
+                    {{--                        <x-jet-nav-link href="{{ route('recipe.index') }}" :active="request()->routeIs('recipe.index')">--}}
+                    {{--                            {{ __('Recipes') }}--}}
+                    {{--                        </x-jet-nav-link>--}}
+                    {{--                    </div>--}}
                 </div>
             </div>
 
