@@ -9,7 +9,7 @@
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             <h1>Create</h1>
             <x-jet-validation-errors class="mb-4" />
-            <form action="POST" action="{{ route("ingredient.store") }}">
+            <form action="{{ route("ingredients.store") }}" method="POST">
                 @csrf
 
                 <div>
@@ -39,7 +39,7 @@
                     <x-jet-input id="images" class="block mt-1 w-full" type="text" name="images" :value="old('images')" />
                 </div>
                 <div class="flex items-center justify-end mt-4">
-                    <x-jet-button wire:click="store" class="ml-4">
+                    <x-jet-button class="ml-4">
                         {{ __('Add ingredient') }}
                     </x-jet-button>
                 </div>

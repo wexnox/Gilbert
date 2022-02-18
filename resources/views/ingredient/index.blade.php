@@ -6,7 +6,7 @@
     </x-slot>
     <div class="container my-12 mx-auto px-4 md:px-12">
         <x-jet-button class="ml-4">
-            <a class="" href="{{route('ingredient.create')}}">Add new ingredient</a>
+            <a class="" href="{{route('ingredients.create')}}">Add new ingredient</a>
         </x-jet-button>
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
 
@@ -17,7 +17,7 @@
                     <!-- Article -->
                     <article class="overflow-hidden rounded-lg shadow-lg">
 
-                        <a href="{{ route('ingredient.show' , $ingredient->id) }}">
+                        <a href="{{ route('ingredients.show' , $ingredient->id) }}">
                             <img alt="{{ $ingredient->name }}" class="block h-auto w-full  " src="{{ $ingredient->images }}">
                         </a>
 
@@ -33,13 +33,13 @@
                         </header>
 
                         <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                            <a class="flex items-center no-underline hover:underline text-black" href="{{ route('ingredient.show' , $ingredient->id) }}">
+                            <a class="flex items-center no-underline hover:underline text-black" href="{{ route('ingredients.show' , $ingredient->id) }}">
                                 <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
                                 <p class="ml-2 text-sm">
                                     Author Name
                                 </p>
                             </a>
-                            <a class="no-underline text-grey-darker hover:text-red-dark" href="{{ route('ingredient.show' , $ingredient->id) }}">
+                            <a class="no-underline text-grey-darker hover:text-red-dark" href="{{ route('ingredients.show' , $ingredient->id) }}">
                                 <span class="hidden">Like</span>
                                 <i class="fa fa-heart"></i>
                             </a>

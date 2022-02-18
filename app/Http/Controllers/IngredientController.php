@@ -37,7 +37,7 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
+
         $request->validate([
             'name' => 'required',
             'excerpt' => 'required',
@@ -47,18 +47,16 @@ class IngredientController extends Controller
             'images' => 'required',
         ]);
 
-//        $ingredient = new Ingredient();
-//        $ingredient->name = $request->name;
-//        $ingredient->excerpt = $request->excerpt;
-//        $ingredient->description = $request->description;
-//        $ingredient->amount = $request->amount;
-//        $ingredient->quantity = $request->quantity;
-//        $ingredient->images = $request->images;
-//        $ingredient->save();
+        $ingredient = new Ingredient();
+        $ingredient->name = $request->name;
+        $ingredient->excerpt = $request->excerpt;
+        $ingredient->description = $request->description;
+        $ingredient->amount = $request->amount;
+        $ingredient->quantity = $request->quantity;
+        $ingredient->images = $request->images;
+        $ingredient->save();
 
-        Ingredient::create($request->all());
-
-        return redirect()->route('dashboard')->with(' Ingredient has been created successfully');
+        return redirect()->route('ingredients.index')->with(' Ingredient has been created successfully');
     }
 
     /**

@@ -22,4 +22,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('ingredient', IngredientController::class)->middleware("auth:web");
+Route::resource('ingredients', IngredientController::class);
