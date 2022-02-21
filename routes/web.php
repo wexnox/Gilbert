@@ -25,4 +25,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('shoppingcart', ShoppingCartController::class);
 Route::resource('ingredients', IngredientController::class);
-//Route::resource('recipe', RecipeController::class);
+Route::resource('recipe', RecipeController::class);
