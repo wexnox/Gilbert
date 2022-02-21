@@ -62,3 +62,7 @@
 
 </x-app-layout>
 
+{{-- Seach box --}}
+{{-- Order by--}}
+{{-- Irder Asc --}}
+{{-- Per Page --}}

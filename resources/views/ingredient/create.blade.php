@@ -1,3 +1,6 @@
+@php
+    $disabled = $errors->any() || empty($this->name) || empty($this->excerpt) || empty($this->description) ? true : false;
+@endphp
 <x-app-layout>
 
     <x-slot name="title">
@@ -9,6 +12,7 @@
             {{ __('Ingredient') }}
         </h2>
     </x-slot>
+
 
     <div class="min-h-screen flex flex-col  items-center pt-6 sm:pt-0 bg-gray-100">
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
@@ -44,9 +48,9 @@
                     <x-jet-input id="images" class="block mt-1 w-full" type="text" name="images" :value="old('images')" />
                 </div>
                 <div class="flex items-center justify-end mt-4">
-                    <x-jet-button class="ml-4">
+                    <x-buttons.primary class="ml-4" :disabled="$disabled">
                         {{ __('Add ingredient') }}
-                    </x-jet-button>
+                    </x-buttons.primary>
                 </div>
             </form>
         </div>
