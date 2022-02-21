@@ -1,4 +1,4 @@
-<footer class="text-center lg:text-left bg-gray-100 text-gray-600 mt-16">
+<footer class="text-center lg:text-left bg-gray-100 text-gray-600 pt-16">
 
     <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
         <div class="mr-12 hidden lg:block">

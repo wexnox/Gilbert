@@ -9,7 +9,7 @@
 
                     <div class="">
                         <div>
-{{--                            <x-jet-application-logo class="block h-12 w-auto" />--}}
+                            {{--                            <x-jet-application-logo class="block h-12 w-auto" />--}}
                         </div>
 
                         <div class="p-6 sm:px-20">
@@ -17,13 +17,9 @@
                                 Welcome to Gilbert!
                             </div>
                             <div class="mt-6 text-gray-500">
-                                Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application.
-                                Laravel is designed
-                                to help you build your application using a development environment that is simple, powerful, and
-                                enjoyable. We believe
-                                you should love expressing your creativity through programming, so we have spent time carefully
-                                crafting the Laravel
-                                ecosystem to be a breath of fresh air. We hope you love it.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa earum est laudantium nulla provident quam quia repellendus veritatis vero voluptates.
+                                Dolorem facilis in iure, magnam minus molestias nam quae rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Aperiam at dolor dolores doloribus error fuga in incidunt minima minus odio officia pariatur possimus, ratione recusandae saepe sed tenetur ullam, voluptas.
                             </div>
                         </div>
                     </div>
@@ -42,14 +38,13 @@
                                         d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
                             <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a
-                                        href="https://laravel.com/docs">Documentation</a></div>
+                                        href="http://gilbert.wexox.no/recipes">Recipes</a></div>
                         </div>
 
                         <div class="ml-12">
                             <div class="mt-2 text-sm text-gray-500">
-                                Laravel has wonderful documentation covering every aspect of the framework. Whether
-                                you're new to the framework or have previous experience, we recommend reading all of the
-                                documentation from beginning to end.
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dicta enim esse, ex expedita fugit harum id in inventore itaque, nulla possimus quod reiciendis sapiente
+                                sint sit tempora unde veritatis!
                             </div>
 
                             <a href="https://laravel.com/docs">
