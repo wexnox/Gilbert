@@ -65,11 +65,11 @@ class IngredientController extends Controller
      * @param \App\Models\Ingredient $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function show(Ingredient $ingredient)
+    public function show(Ingredient $ingredient, $id)
     {
-//        $ingredient = Ingredient::findOrFail($id);
-//
-//        return view('ingredient.show', compact('ingredient'));
+        $ingredient = Ingredient::findOrFail($id);
+
+        return view('ingredient.show', compact('ingredient'));
     }
 
     /**
@@ -80,7 +80,7 @@ class IngredientController extends Controller
      */
     public function edit(Ingredient $ingredient)
     {
-//        return view('ingredient.edit', compact('ingredient'));
+        return view('ingredient.edit', compact('ingredient'));
     }
 
     /**
@@ -90,18 +90,28 @@ class IngredientController extends Controller
      * @param \App\Models\Ingredient $ingredient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ingredient $ingredient)
+    public function update(Request $request, Ingredient $ingredient, $id)
     {
         // TODO: add more to validate
-//        $request->validate([
-//            'name' => 'required'
-//        ]);
-//
-//        $ingredient = Ingredient::find($id);
-//        $ingredient->name = $request->name;
-//
-//
-//        return redirect()->route('ingredient.index')->with('success', 'Ingredient updated successfully');
+        $request->validate([
+            'name' => 'required',
+            'excerpt' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'quantity' => 'required',
+            'images' => 'required',
+        ]);
+
+        $ingredient = new Ingredient();
+        $ingredient->name = $request->name;
+        $ingredient->excerpt = $request->excerpt;
+        $ingredient->description = $request->description;
+        $ingredient->amount = $request->amount;
+        $ingredient->quantity = $request->quantity;
+        $ingredient->images = $request->images;
+        $ingredient->save();
+
+        return redirect()->route('ingredient.index', ' Ingredient has been created successfully');
     }
 
     /**
@@ -112,8 +122,8 @@ class IngredientController extends Controller
      */
     public function destroy(Ingredient $ingredient)
     {
-//        $ingredient->delete();
-//
-//        return redirect()->route('ingredient.index', 'Ingredient has been deleted successfull');
+        $ingredient->delete();
+
+        return redirect()->route('ingredient.index', 'Ingredient has been deleted successfull');
     }
 }
