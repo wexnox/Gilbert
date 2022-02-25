@@ -47,11 +47,21 @@
                     <x-jet-label for="images" value="{{ __('Images') }}"/>
                     <x-jet-input id="images" class="block mt-1 w-full" type="text" name="images" :value="old('images')"/>
                 </div>
-                <div class="flex items-center justify-end mt-4">
-                    {{--                    <x-buttons.primary class="ml-4" :disabled="$disabled">--}}
-                    <x-buttons.primary class="ml-4">
-                        {{ __('Add ingredient') }}
-                    </x-buttons.primary>
+                <div class="flex items-center justify-between mt-4">
+                    <div class="">
+                        <x-buttons.tertiary class="mr-4" onclick="history.back()">
+                            {{ __('Cancel') }}
+                        </x-buttons.tertiary>
+                    </div>
+                    <div class="">
+                        <x-buttons.secondary class="" type="reset">
+                            {{ __('Reset') }}
+                        </x-buttons.secondary>
+
+                        <x-buttons.primary class="ml-2">
+                            {{ __('Add ingredient') }}
+                        </x-buttons.primary>
+                    </div>
                 </div>
             </form>
         </div>
