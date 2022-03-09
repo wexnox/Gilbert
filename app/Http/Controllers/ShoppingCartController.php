@@ -43,13 +43,15 @@ class ShoppingCartController extends Controller
             'description' => 'required',
         ]);
 
-        $shoppingcart = new ShoppingCart();
-        $shoppingcart->name = $request->name;
-        $shoppingcart->excerpt = $request->excerpt;
-        $shoppingcart->description = $request->description;
-        $shoppingcart->save();
+        ShoppingCart::create($request->all());
+//        $shoppingcart = new ShoppingCart();
+//        $shoppingcart->name = $request->name;
+//        $shoppingcart->excerpt = $request->excerpt;
+//        $shoppingcart->description = $request->description;
+//        $shoppingcart->save();
 
-        return redirect()->route('shoppingcart.index', 'Shopping cart has been created successfully');
+        return redirect()->route('shoppingcart.index')->with('Shopping cart has been created successfully');
+
     }
 
     /**
@@ -73,7 +75,7 @@ class ShoppingCartController extends Controller
      */
     public function edit(ShoppingCart $shoppingCart)
     {
-        return view ('shoppingcart.edit', compact('shoppingCart'));
+        return view('shoppingcart.edit', compact('shoppingCart'));
     }
 
     /**
