@@ -11,24 +11,56 @@
                 </div>
 
                 <!-- Navigation Links -->
+                @role('admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('ingredients.index') }}" :active="request()->routeIs('ingredients.index')">
-                        {{ __('Ingredient') }}
-                    </x-jet-nav-link>
+
+                    <x-nav-link href="{{ route('admin.index') }}"
+                                :active="request()->routeIs('admin.index')">
+                        {{ __('Admin Dashboard') }}
+                    </x-nav-link>
+
+                    <x-nav-link href="{{ route('admin.roles.index') }}" :active="request()->routeIs('admin.roles.index')">
+                        {{ __('Roller') }}
+                    </x-nav-link>
+
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('shoppingcart.index') }}" :active="request()->routeIs('shoppingcart.index')">
-                            {{ __('Shopping Cart') }}
-                        </x-jet-nav-link>
+                        <x-nav-link href="{{ route('admin.permissions.index') }}" :active="request()->routeIs('admin.permissions.index')">
+                            {{ __('Permissions') }}
+                        </x-nav-link>
                     </div>
+
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    </div>
+
+                </div>
+
+                @else
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+
+                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-jet-nav-link>
+
                         <x-jet-nav-link href="{{ route('recipes.index') }}" :active="request()->routeIs('recipe.index')">
                             {{ __('Recipes') }}
                         </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('ingredients.index') }}" :active="request()->routeIs('ingredients.index')">
+                            {{ __('Ingredient') }}
+                        </x-jet-nav-link>
+
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-jet-nav-link href="{{ route('shoppingcart.index') }}" :active="request()->routeIs('shoppingcart.index')">
+                                {{ __('Shopping Cart') }}
+                            </x-jet-nav-link>
+                        </div>
                     </div>
-                </div>
+
+                    @endrole
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
