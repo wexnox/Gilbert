@@ -4,12 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Recipe;
 use Illuminate\Http\Request;
-
+use OpenApi\Annotations as OA;
 
 class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
+     */
+    /**
+    /**
+     * @OA\Get(
+     *     path="/api/recipes",
+     *     tags={"Recipes"},
+     *     summary="List all recipes",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Recipe")
+     *         )
+     *     )
+     * )
      */
     public function index()
     {
@@ -19,6 +35,22 @@ class RecipeController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     */
+    /**
+     * @OA\Post(
+     *     path="/api/recipes",
+     *     tags={"Recipes"},
+     *     summary="Create a new recipe",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(ref="#/components/schemas/Recipe")
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Recipe created",
+     *         @OA\JsonContent(ref="#/components/schemas/Recipe")
+     *     )
+     * )
      */
     public function store(Request $request)
     {
@@ -53,6 +85,30 @@ class RecipeController extends Controller
 
     /**
      * Display the specified resource.
+     */
+    /**
+     * @OA\Get(
+     *     path="/api/recipes/{id}",
+     *     tags={"Recipes"},
+     *     summary="Get a single recipe",
+     *     description="Retrieves details of a specific recipe by ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="integer"),
+     *         description="The recipe ID"
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\JsonContent(ref="#/components/schemas/Recipe")
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Recipe not found"
+     *     )
+     * )
      */
     public function show(string $id)
     {
@@ -101,3 +157,49 @@ class RecipeController extends Controller
         return response()->json(null, 204);
     }
 }
+/**
+ * @OA\Schema(
+ *     schema="Recipe",
+ *     type="object",
+ *     title="Recipe",
+ *     description="A recipe object",
+ *     properties={
+ *         @OA\Property(
+ *             property="id",
+ *             type="integer",
+ *             description="The unique identifier of a recipe"
+ *         ),
+ *         @OA\Property(
+ *             property="title",
+ *             type="string",
+ *             description="The title of the recipe"
+ *         ),
+ *         @OA\Property(
+ *             property="description",
+ *             type="string",
+ *             description="A brief description of the recipe"
+ *         ),
+ *         @OA\Property(
+ *             property="preparation_steps",
+ *             type="string",
+ *             description="The preparation steps of the recipe"
+ *         ),
+ *         @OA\Property(
+ *             property="serving_size",
+ *             type="integer",
+ *             description="The number of servings the recipe makes"
+ *         ),
+ *         @OA\Property(
+ *             property="cooking_time",
+ *             type="integer",
+ *             description="The cooking time in minutes"
+ *         ),
+ *         @OA\Property(
+ *             property="ingredients",
+ *             type="array",
+ *             @OA\Items(ref="#/components/schemas/Ingredient"),
+ *             description="The list of ingredients used in the recipe"
+ *         )
+ *     }
+ * )
+ */
