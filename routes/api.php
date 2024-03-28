@@ -5,11 +5,11 @@ use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\RecipeController;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
-//Route::apiResource('recipes', RecipeController::class);
-//Route::apiResource('ingredients', IngredientController::class);
-
-Route::post('/login', [AuthController::class, 'login']);
-
+// Authentication Routes
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+Route::post('register', [AuthController::class, 'register']);
+Route::get('user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 
 // Applying Sanctum's middleware to a single route
 //Route::middleware([EnsureFrontendRequestsAreStateful::class])->get('/user', [YourApiController::class, 'user']);
