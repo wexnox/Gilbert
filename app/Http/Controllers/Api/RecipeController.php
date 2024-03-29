@@ -29,8 +29,14 @@ class RecipeController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+            'image' => 'nullable|image',
             // Add other validation rules as needed
         ]);
+
+        if ($request->hasFile('image')) {
+            $filename = $request->image->store('recipes', 'public');
+            $validatedData['image'] = $filename;
+        }
 
         $recipe = Recipe::create($validatedData);
 
@@ -58,8 +64,20 @@ class RecipeController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'required',
+            'image' => 'nullable|image',
+            // Add other validation rules as needed
+        ]);
+
+        if ($request->hasFile('image')) {
+            $filename = $request->image->store('recipes', 'public');
+            $validatedData['image'] = $filename;
+        }
+
         $recipe = Recipe::findOrFail($id);
-        $recipe->update($request->all());
+        $recipe->update($validatedData);
 
         // Update ingredients if provided
         // You might need to adjust this logic based on how you want to handle ingredient updates

@@ -8,7 +8,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Recipe extends Model
 {
-    protected $fillable = ['title', 'description', 'preparation_steps', 'serving_size', 'cooking_time'];
+    protected $fillable = ['title', 'description', 'preparation_steps', 'serving_size', 'cooking_time', 'image'];
 
     use HasFactory, HasApiTokens;
 
