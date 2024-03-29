@@ -1,10 +1,6 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-import axios from 'axios';
+import { createStore } from 'vuex';
 
-Vue.use(Vuex);
-
-export default new Vuex.Store({
+const store = createStore({
     state: function() {
         return {
             status: '',
@@ -64,3 +60,4 @@ export default new Vuex.Store({
     },
     modules: {}
 });
+export default store;
