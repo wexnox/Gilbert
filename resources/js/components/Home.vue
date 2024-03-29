@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="hero bg-cover bg-center h-screen" style="background-image: url('/path/to/hero-image.jpg');">
+        <section class="hero bg-cover bg-center h-screen" :style="{ backgroundImage: `url(${heroImage})` }">
             <div class="text-center text-white py-36">
                 <h1 class="text-5xl font-bold mb-4">Discover Your Next Favorite Recipe</h1>
                 <p class="text-xl mb-8">Join our community of food lovers.</p>
@@ -10,17 +10,17 @@
         <section class="features py-12">
             <div class="container mx-auto grid grid-cols-3 gap-8 text-center">
                 <div class="feature">
-                    <img src="/path/to/discover-icon.png" alt="Discover" class="mx-auto mb-4">
+                    <img :src="discoverIcon" alt="Discover" class="mx-auto mb-4">
                     <h3 class="font-bold mb-2">Discover Recipes</h3>
                     <p>Explore thousands of recipes from around the world.</p>
                 </div>
                 <div class="feature">
-                    <img src="/path/to/create-icon.png" alt="Create" class="mx-auto mb-4">
+                    <img :src="createIcon" alt="Create" class="mx-auto mb-4">
                     <h3 class="font-bold mb-2">Create Your Own</h3>
                     <p>Share your culinary creations with a global audience.</p>
                 </div>
                 <div class="feature">
-                    <img src="/path/to/community-icon.png" alt="Community" class="mx-auto mb-4">
+                    <img :src="communityIcon" alt="Community" class="mx-auto mb-4">
                     <h3 class="font-bold mb-2">Join the Community</h3>
                     <p>Connect with fellow food enthusiasts.</p>
                 </div>
@@ -63,7 +63,19 @@
 </template>
 
 <script>
+import heroImage from '@assets/images/hero-image.webp';
+import discoverIcon from '@assets/images/discover-icon.webp';
+import createIcon from '@assets/images/create-icon.webp';
+import communityIcon from '@assets/images/community-icon.webp';
 export default {
     name: 'Home',
+    data() {
+        return {
+            heroImage,
+            discoverIcon,
+            createIcon,
+            communityIcon,
+        };
+    },
 };
 </script>
