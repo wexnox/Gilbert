@@ -10,24 +10,27 @@ use Illuminate\Http\Request;
 class RecipeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the recipes.
+     *
      */
     public function index()
     {
         $recipes = Recipe::all();
+
         return response()->json($recipes);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created recipe in storage.
+     *
      */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
+            // Add other validation rules as needed
         ]);
-
 
         $recipe = Recipe::create($validatedData);
 
@@ -39,17 +42,6 @@ class RecipeController extends Controller
         }
 
         return response()->json($recipe, 201);
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-//        TODO: Add create
-        // Return a view for creating a new recipe, typically used for web routes
-        return view('recipes.create');
     }
 
     /**
@@ -57,22 +49,8 @@ class RecipeController extends Controller
      */
     public function show(string $id)
     {
-        $recipe = Recipe::findOrFail($id);
-
-        // Use the sendResponse method for generating the response
+        $recipe = Recipe::with('ingredients')->findOrFail($id);
         return response()->json($recipe);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-//        TODO: Add edit
-        $recipe = Recipe::findOrFail($id);
-
-        // Return a view for editing the recipe, typically used for web routes
-        return view('recipes.edit', compact('recipe'));
     }
 
     /**
