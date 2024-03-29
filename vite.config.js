@@ -1,6 +1,10 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
+import * as path from 'path';
+import {fileURLToPath} from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
     plugins: [
@@ -10,4 +14,9 @@ export default defineConfig({
         }),
         vue(),
     ],
+    resolve: {
+        alias: {
+            '@assets': path.resolve(__dirname, 'resources/assets'),
+        },
+    },
 });
