@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('preparation_steps');
             $table->integer('serving_size');
             $table->integer('cooking_time'); // Consider storing in minutes
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
