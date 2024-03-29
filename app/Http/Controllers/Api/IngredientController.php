@@ -15,18 +15,7 @@ class IngredientController extends Controller
     public function index()
     {
         $ingredients = Ingredient::all();
-        // replaced with sendResponse
         return response()->json($ingredients);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        // TODO: Add Create
-        // Return a view for creating a new ingredient, typically used for web routes
-        return view('ingredients.create');
     }
 
     /**
@@ -56,18 +45,6 @@ class IngredientController extends Controller
         $ingredient = Ingredient::findOrFail($id);
         // replaced with sendResponse
         return response()->json($ingredient);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-        $ingredient = Ingredient::findOrFail($id);
-
-        // Return a view for editing the ingredient, typically used for web routes
-        return view('ingredients.edit', compact('ingredient'));
     }
 
     /**
@@ -103,39 +80,4 @@ class IngredientController extends Controller
         return response()->json(null, 204);
     }
 }
-/**
- * @OA\Schema(
- *     schema="Ingredient",
- *     type="object",
- *     title="Ingredient",
- *     description="An ingredient object",
- *     properties={
- *         @OA\Property(
- *             property="id",
- *             type="integer",
- *             description="The unique identifier of an ingredient"
- *         ),
- *         @OA\Property(
- *             property="name",
- *             type="string",
- *             description="The name of the ingredient"
- *         ),
- *         @OA\Property(
- *             property="type",
- *             type="string",
- *             description="The type or category of the ingredient"
- *         ),
- *         @OA\Property(
- *             property="unit_of_measurement",
- *             type="string",
- *             description="The unit of measurement for the ingredient"
- *         ),
- *         @OA\Property(
- *             property="recipes",
- *             type="array",
- *             @OA\Items(ref="#/components/schemas/Recipe"),
- *             description="The list of recipes that use this ingredient"
- *         )
- *     }
- * )
- */
+
