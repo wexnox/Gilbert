@@ -3,7 +3,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://gilbert.test', // Change to your Laravel app's URL
+                target: 'http://localhost:8000', // Change to your Laravel app's URL
                 changeOrigin: true,
                 pathRewrite: { '^/api': '' },
             },
