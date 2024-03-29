@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
@@ -25,8 +26,8 @@ class RecipeController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
-            // Add other validation rules as needed
         ]);
+
 
         $recipe = Recipe::create($validatedData);
 
@@ -57,6 +58,8 @@ class RecipeController extends Controller
     public function show(string $id)
     {
         $recipe = Recipe::findOrFail($id);
+
+        // Use the sendResponse method for generating the response
         return response()->json($recipe);
     }
 
