@@ -1,34 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Ingredient;
 use Illuminate\Http\Request;
-use OpenApi\Annotations as OA;
+
 
 class IngredientController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    /**
-     * @OA\Get(
-     *     path="/api/ingredients",
-     *     tags={"Ingredients"},
-     *     summary="List all ingredients",
-     *     @OA\Response(
-     *         response=200,
-     *         description="Successful operation",
-     *         @OA\JsonContent(
-     *             type="array",
-     *             @OA\Items(ref="#/components/schemas/Ingredient")
-     *         )
-     *     )
-     * )
-     */
     public function index()
     {
         $ingredients = Ingredient::all();
+        // replaced with sendResponse
         return response()->json($ingredients);
     }
 
@@ -44,22 +31,6 @@ class IngredientController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */
-    /**
-     * @OA\Post(
-     *     path="/api/ingredients",
-     *     tags={"Ingredients"},
-     *     summary="Create a new ingredient",
-     *     @OA\RequestBody(
-     *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Ingredient")
-     *     ),
-     *     @OA\Response(
-     *         response=201,
-     *         description="Ingredient created",
-     *         @OA\JsonContent(ref="#/components/schemas/Ingredient")
-     *     )
-     * )
      */
     public function store(Request $request)
     {
@@ -80,33 +51,10 @@ class IngredientController extends Controller
      */
     // The edit method usually returns a view for web routes and might not need API documentation
 
-    /**
-     * @OA\Get(
-     *     path="/api/ingredients/{id}",
-     *     tags={"Ingredients"},
-     *     summary="Get a single ingredient",
-     *     description="Retrieves details of a specific ingredient by ID",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         @OA\Schema(type="integer"),
-     *         description="The ingredient ID"
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="Successful operation",
-     *         @OA\JsonContent(ref="#/components/schemas/Ingredient")
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="Ingredient not found"
-     *     )
-     * )
-     */
     public function show(string $id)
     {
         $ingredient = Ingredient::findOrFail($id);
+        // replaced with sendResponse
         return response()->json($ingredient);
     }
 
@@ -125,38 +73,7 @@ class IngredientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    /**
-     * @OA\Put(
-     *     path="/api/ingredients/{id}",
-     *     tags={"Ingredients"},
-     *     summary="Update an ingredient",
-     *     description="Updates the details of an existing ingredient",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         @OA\Schema(type="integer"),
-     *         description="The ingredient ID"
-     *     ),
-     *     @OA\RequestBody(
-     *         required=true,
-     *         description="Ingredient object with updated data",
-     *         @OA\JsonContent(ref="#/components/schemas/Ingredient")
-     *     ),
-     *     @OA\Response(
-     *         response=200,
-     *         description="Ingredient updated"
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="Ingredient not found"
-     *     ),
-     *     @OA\Response(
-     *         response=400,
-     *         description="Invalid input"
-     *     )
-     * )
-     */
+
     public function update(Request $request, string $id)
     {
         //
@@ -176,29 +93,7 @@ class IngredientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    /**
-     * @OA\Delete(
-     *     path="/api/ingredients/{id}",
-     *     tags={"Ingredients"},
-     *     summary="Delete an ingredient",
-     *     description="Removes an ingredient from the collection",
-     *     @OA\Parameter(
-     *         name="id",
-     *         in="path",
-     *         required=true,
-     *         @OA\Schema(type="integer"),
-     *         description="The ingredient ID"
-     *     ),
-     *     @OA\Response(
-     *         response=204,
-     *         description="Ingredient deleted"
-     *     ),
-     *     @OA\Response(
-     *         response=404,
-     *         description="Ingredient not found"
-     *     )
-     * )
-     */
+
     public function destroy(string $id)
     {
         //
