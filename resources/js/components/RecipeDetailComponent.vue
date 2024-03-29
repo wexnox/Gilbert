@@ -8,7 +8,15 @@
         <div v-else class="w-full max-w-2xl p-6 m-auto bg-white rounded-lg shadow-md">
             <h2 class="text-2xl font-semibold text-gray-700">{{ recipe.title }}</h2>
             <p class="mt-2 text-gray-600">{{ recipe.description }}</p>
-            <!-- Details like ingredients and steps go here -->
+            <div class="mt-2 text-gray-600">
+                <h3 class="font-bold">Preparation Steps:</h3>
+                <p>{{ recipe.preparation_steps }}</p>
+            </div>
+            <p>Serving size: <span class="font-bold">{{ recipe.serving_size }}</span></p>
+            <p>Cooking time: <span class="font-bold">{{ recipe.cooking_time }} minutes</span></p>
+            <div v-if="recipe.image" class="mt-2">
+                <img :src="recipe.image" alt="Recipe image" class="w-full h-full object-cover">
+            </div>
         </div>
     </div>
 </template>
