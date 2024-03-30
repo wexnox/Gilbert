@@ -13,6 +13,20 @@ class RecipesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        Recipe::factory()->count(10)->create();
+//        Recipe::factory()->count(10)->create();
+
+        Recipe::factory()->count(20)->create()->each(function ($recipe) {
+            // For each recipe, create 3-5 ingredients and attach them
+            $ingredients = Ingredient::factory()->count(rand(3, 5))->create();
+
+            foreach ($ingredients as $ingredient) {
+                DB::table('recipe_ingredients')->insert([
+                    'recipe_id' => $recipe->id,
+                    'ingredient_id' => $ingredient->id,
+                    'quantity' => rand(1, 10),
+                    'measurement' => $this->faker->randomElement(['grams', 'tablespoons', 'cups', 'pieces', 'teaspoons']),
+                ]);
+            }
+        });
     }
 }
