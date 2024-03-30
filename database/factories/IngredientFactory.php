@@ -26,7 +26,7 @@ class IngredientFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'type' => $this->faker->randomElement(['spice', 'vegetable', 'fruit', 'dairy', 'meat']),
+            'type' => $this->faker->randomElement(['Spice', 'Vegetable', 'Fruit', 'Dairy', 'Meat']),
             'unit_of_measurement' => $this->faker->randomElement(['grams', 'tablespoons', 'cups', 'pieces', 'teaspoons']),
         ];
     }
