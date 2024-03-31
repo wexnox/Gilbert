@@ -21,8 +21,10 @@ class DatabaseSeeder extends Seeder
 //        ]);
 
         $this->call([
-            RecipesTableSeeder::class,
+            RecipesTableSeeder::class, // The seeder for random recipes
+            FixedRecipesSeeder::class, // The seeder for specific recipes
             IngredientsTableSeeder::class,
+
         ]);
     }
 }
