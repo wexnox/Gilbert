@@ -16,7 +16,12 @@ class FixedRecipesSeeder extends Seeder
             [
                 'title' => 'Recipe 1',
                 'description' => 'Description for Recipe 1',
-                'preparation_steps' => 'Step 1, Step 2, Step 3',
+//                'preparation_steps' => 'Step 1, Step 2, Step 3',
+                'preparation_steps' => json_encode([
+                    "Step 1 for Recipe 1",
+                    "Step 2 for Recipe 1",
+                    // Additional steps as needed
+                ]),
                 'serving_size' => 4,
                 'cooking_time' => 30,
                 'image' => 'path/to/image1.jpg',
