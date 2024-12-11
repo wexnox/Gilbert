@@ -15,7 +15,8 @@ class Recipe extends Model
         'preparation_steps',
         'serving_size',
         'cooking_time',
-        'image'];
+        'image'
+    ];
 
     protected $casts = [
         'alternative_titles' => 'array',
