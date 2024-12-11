@@ -8,13 +8,18 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Ingredient extends Model
 {
-    protected $fillable = ['name', 'type', 'unit_of_measurement'];
+    protected $fillable = [
+        'name',
+        'type',
+        'allergen_info',
+        'nutrients',
+        'unit_of_measurement'
+    ];
 
     use HasFactory, HasApiTokens;
 
-    public function recipes()
-    {
-        return $this->belongsToMany(Recipe::class, 'recipe_ingredients')
-            ->withPivot('quantity', 'measurement');
-    }
+    protected $casts = [
+        'allergen_info' => 'array',
+        'nutrients' => 'array',
+    ];
 }
