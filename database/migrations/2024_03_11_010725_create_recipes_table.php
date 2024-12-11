@@ -12,14 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // Primary key
             $table->string('title');
+            $table->json('alternative_titles')->nullable();
+
+            $table->unsignedBigInteger('author_id'); // Foreign key
+            $table->text('original_source')->nullable();
+            $table->string('thumbnail_image')->nullable();
+            $table->string('cover_image')->nullable();
+            $table->string('image')->nullable();
             $table->text('description');
             $table->text('preparation_steps');
             $table->integer('serving_size');
-            $table->integer('cooking_time'); // Consider storing in minutes
-            $table->string('image')->nullable();
+            $table->integer('cooking_time');
+
             $table->timestamps();
+
+            $table->foreign('author_id')->references('id')->on('authors')->onDelete('cascade');
         });
     }
 
