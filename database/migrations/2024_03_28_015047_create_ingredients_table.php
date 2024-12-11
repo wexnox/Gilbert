@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->string('unit_of_measurement')->nullable();
+            $table->json('allergen_info')->nullable();
+            $table->string('unit_of_measurement')->nullable(); // not sure if this is correct
+            $table->json('nutrients')->nullable();
             $table->timestamps();
         });
     }
