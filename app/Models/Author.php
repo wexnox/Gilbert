@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class author extends Model
+class Author extends Model
 {
     use HasFactory;
 
