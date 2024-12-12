@@ -12,11 +12,26 @@ class IngredientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+    public function index(Request $request)
     {
-        $ingredients = Ingredient::all();
-        return response()->json($ingredients);
+        $ingredients = Ingredient::paginate(10); // 10 items per page
+        return response()->json($ingredients, 200);
     }
+
+// { combine in this: Example: GET /api/ingredients?nutrient=protein&value=5
+//    public function index(Request $request)
+//    {
+//        $query = Ingredient::query();
+//
+//        if ($request->has('nutrient')) {
+//            $query->whereJsonContains('nutrients->' . $request->nutrient, '>=', $request->value);
+//        }
+//
+//        return response()->json($query->get(), 200);
+//    }
+
+// }
 
     /**
      * Store a newly created resource in storage.
@@ -42,9 +57,12 @@ class IngredientController extends Controller
 
     public function show(string $id)
     {
-        $ingredient = Ingredient::findOrFail($id);
-        // replaced with sendResponse
-        return response()->json($ingredient);
+        $ingredient = Ingredient::find($id);
+        if (!$ingredient) {
+            return response()->json(['error' => 'Ingredient not found'], 404);
+        }
+
+        return response()->json($ingredient, 200);
     }
 
     /**
