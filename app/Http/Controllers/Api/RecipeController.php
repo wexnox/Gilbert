@@ -15,9 +15,8 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $recipes = Recipe::all();
-
-        return response()->json($recipes);
+        $recipes = Recipe::with(['author', 'coAuthors', 'ingredients', 'tasks'])->get();
+        return response()->json($recipes, 200);
     }
 
     /**
@@ -55,8 +54,12 @@ class RecipeController extends Controller
      */
     public function show(string $id)
     {
-        $recipe = Recipe::with('ingredients')->findOrFail($id);
-        return response()->json($recipe);
+        $recipe = Recipe::with(['author', 'coAuthors', 'ingredients', 'tasks'])->find($id);
+        if (!$recipe) {
+            return response()->json(['error' => 'Recipe not found'], 404);
+        }
+
+        return response()->json($recipe, 200);
     }
 
     /**
