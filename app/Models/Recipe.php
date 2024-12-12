@@ -41,9 +41,4 @@ class Recipe extends Model
     {
         return $this->hasMany(RecipeTask::class)->orderBy('step_order');
     }
-//    public function ingredients()
-//    {
-//        return $this->belongsToMany(Ingredient::class, 'recipe_ingredients')
-//            ->withPivot('quantity', 'measurement');
-//    }
 }
