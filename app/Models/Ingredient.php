@@ -22,4 +22,9 @@ class Ingredient extends Model
         'allergen_info' => 'array',
         'nutrients' => 'array',
     ];
+
+    public function recipes()
+    {
+        return $this->belongsToMany(Recipe::class, 'recipe_ingredients')->withPivot('quantity', 'unit');
+    }
 }
