@@ -22,7 +22,9 @@ Route::middleware([EnsureFrontendRequestsAreStateful::class])->group(function ()
     Route::get('user', [AuthController::class, 'user'])->middleware('auth:sanctum');
 });
 
+// Recipes CRUD
 Route::apiResource('recipes', RecipeController::class);
+// Ingredients CRUD
 Route::apiResource('ingredients', IngredientController::class);
 // Protected Routes
 Route::middleware('auth:sanctum')->group(function () {
