@@ -27,9 +27,17 @@ class RecipeController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'description' => 'required',
+            'alternative_titles' => 'nullable|json',
+            'author_id' => 'required|exists:authors,id',
+            'original_source' => 'nullable|string',
+            'thumbnail_image' => 'nullable|string',
+            'cover_image' => 'nullable|string',
             'image' => 'nullable|image',
-            // Add other validation rules as needed
+            'description' => 'required|string',
+            'preparation_steps' => 'required|string',
+            'serving_size' => 'required|integer',
+            'cooking_time' => 'required|integer',
+
         ]);
 
         if ($request->hasFile('image')) {
@@ -67,11 +75,23 @@ class RecipeController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $recipe = Recipe::find($id);
+        if (!$recipe) {
+            return response()->json(['error' => 'Recipe not found'], 404);
+        }
+
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'description' => 'required',
+            'alternative_titles' => 'nullable|json',
+            'author_id' => 'required|exists:authors,id',
+            'original_source' => 'nullable|string',
+            'thumbnail_image' => 'nullable|string',
+            'cover_image' => 'nullable|string',
             'image' => 'nullable|image',
-            // Add other validation rules as needed
+            'description' => 'required|string',
+            'preparation_steps' => 'required|string',
+            'serving_size' => 'required|integer',
+            'cooking_time' => 'required|integer',
         ]);
 
         if ($request->hasFile('image')) {
@@ -99,7 +119,12 @@ class RecipeController extends Controller
      */
     public function destroy(string $id)
     {
-        Recipe::findOrFail($id)->delete();
-        return response()->json(null, 204);
+        $recipe = Recipe::find($id);
+        if (!$recipe) {
+            return response()->json(['error' => 'Recipe not found'], 404);
+        }
+
+        $recipe->delete();
+        return response()->json(['message' => 'Recipe deleted'], 200);
     }
 }
