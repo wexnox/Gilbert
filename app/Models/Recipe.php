@@ -11,10 +11,15 @@ class Recipe extends Model
     use HasFactory, HasApiTokens;
     protected $fillable = [
         'title',
-        'description',
+        'alternative_titles',
+        'author_id',
+        'original_source',
+        'thumbnail_image',
+        'cover_image',
         'preparation_steps',
         'serving_size',
         'cooking_time',
+        'description',
         'image'
     ];
 
