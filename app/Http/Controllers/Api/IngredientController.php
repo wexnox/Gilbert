@@ -38,10 +38,11 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'type' => 'required|max:255',
+            'type' => 'max:255',
+            'allergen_info' => 'nullable|json',
+            'nutrients' => 'nullable|json',
             'unit_of_measurement' => 'nullable|max:255',
         ]);
 
@@ -71,18 +72,23 @@ class IngredientController extends Controller
 
     public function update(Request $request, string $id)
     {
-        //
         $ingredient = Ingredient::findOrFail($id);
+
+        if (!$ingredient) {
+            return response()->json(['error' => 'Ingredient not found'], 404);
+        }
 
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'type' => 'required|max:255',
+            'type' => 'max:255',
+            'allergen_info' => 'nullable|json',
+            'nutrients' => 'nullable|json',
             'unit_of_measurement' => 'nullable|max:255',
         ]);
 
         $ingredient->update($validatedData);
 
-        return response()->json($ingredient);
+        return response()->json($ingredient, 200);
     }
 
     /**
@@ -93,9 +99,12 @@ class IngredientController extends Controller
     {
         //
         $ingredient = Ingredient::findOrFail($id);
+        if (!$ingredient) {
+            return response()->json(['error' => 'Ingredient not found'], 404);
+        }
         $ingredient->delete();
 
-        return response()->json(null, 204);
+        return response()->json(null, 200);
     }
 }
 
