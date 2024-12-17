@@ -95,16 +95,15 @@ class IngredientController extends Controller
      * Remove the specified resource from storage.
      */
 
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
-        $ingredient = Ingredient::findOrFail($id);
+        $ingredient = Ingredient::find($id);
         if (!$ingredient) {
             return response()->json(['error' => 'Ingredient not found'], 404);
         }
-        $ingredient->delete();
 
-        return response()->json(null, 200);
+        $ingredient->delete();
+        return response()->json(['message' => 'Ingredient deleted'], 200);
     }
 }
 
